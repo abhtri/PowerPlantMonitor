@@ -1,0 +1,7 @@
+CREATE TABLE solar(
+
+  id UUID,
+  title TEXT,
+
+  PRIMARY KEY ((id))
+) WITH CLUSTERING ORDER BY (id ASC);
