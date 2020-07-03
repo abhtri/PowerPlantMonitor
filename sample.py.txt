@@ -1,0 +1,31 @@
+#import np as numpy;
+def fnt(indexes,k):
+    # get unique elements
+    setIndex = set(indexes)
+    
+    n = len(setIndex); # total size of set to compute possibility of making test with constraint
+    sum = k*(k+1)//2 #1 + 2 + 3 ... n == n.n+1/2 total size of all k test list if made starting from 1
+    
+    diff = n-sum   # unused elements if test formed of sizes 1 , 2, 3 ...
+    if(diff%k !=0):
+        return [],[]
+    
+    x = diff//k  # equally divide extra so test list can be from 51,52 ,53 instead of 1,2,3 x is 50 in this case
+    test=[]
+    train = []
+    y=0
+    listIndexes = list(setIndex)
+    for i in range(k):
+        t=listIndexes[y:y+x+i+1] #slice through the elements 
+        test.append(t)
+        y = y+x+i+1
+    for i in range(k):
+        trainList = list(setIndex - set(test[i]) )  # Difference from test all go to train or do in some other way np.setdiff1d(list_2,list_1)
+        train.append(trainList)
+    return train,test
+
+
+train,test = fnt([1,2,3,4,5,6,7,8,9],3)
+print('train : ', train)
+print('test : ', test)       
+    
