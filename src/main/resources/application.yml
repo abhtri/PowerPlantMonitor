@@ -5,3 +5,4 @@ spring:
     password: ~
     database: mydb
     retention-policy: autogen
+    format: json
